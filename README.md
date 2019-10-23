@@ -5,7 +5,8 @@ from most famous downwards.
 
 It uses GitHub's API to obtain the data: https://developer.github.com/v3/issues/
 
-In order to avoid counting similar words, a stemming library is used:
+A stemming library is being used to avoid counting similar words (for example: "count",
+"counter", "counting") as separate:
 https://github.com/dkmarley/peco
 
 ## Usage
