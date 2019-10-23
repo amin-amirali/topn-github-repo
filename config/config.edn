@@ -2,4 +2,6 @@
  :git-repo "react"
  :top-n 100
  :sort-by "created"
+ :sort-direction "desc"
+ :state "open"
  }
