@@ -8,5 +8,6 @@
   :test-paths ["test"]
   :main topn-github-repo.core
   :jvm-opts ["-Dconfig=config/config.edn"]
-  :profiles {:uberjar {:uberjar-name "topn-github-repo.jar"}}
+  :profiles {:uberjar {:aot :all
+                       :uberjar-name "topn-github-repo.jar"}}
   )
