@@ -3,4 +3,6 @@
  :sort-by "created"
  :sort-direction "desc"
  :state "open"
+ :top-n-words 10
+ :data-field :title
  }

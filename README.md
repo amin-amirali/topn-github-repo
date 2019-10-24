@@ -9,6 +9,17 @@ A stemming library is being used to avoid counting similar words (for example: "
 "counter", "counting") as separate:
 https://github.com/dkmarley/peco
 
+A few configuration parameters can be found in file: `config/config.edn`, namely:
+- Which git owner should be used: `:git-owner`, currently set at `facebook`
+- Which repo to from the previous owner do we want to count issues from: `:git-repo`, currently using repo `react` 
+- Which field to use to sort issues: `:sort-by`, possible values are created|updated|comments
+- Direction in which to sort the issues: `:sort-direction`, possible values are desc|asc
+- What state should the issues have: `:state`, possible values are open|closed|all
+- How many top words from the issues are to be retreived: `:top-n-words`, currently set at 10
+- Which field to use as a source of data: `:data-field`, currently set to :title, possible values are
+:title|:body (more can be used but these seem to be the fields from each issue's respose that seem to
+make the most sense)
+
 ## Usage
 
 To package into a jar, run: `lein test-and-build`

@@ -21,22 +21,23 @@
 
 (defn select-data-column
   [all-issues]
-  (map #(:title %) all-issues))
+  (map #((:data-field env) %) all-issues))
 
 (defn do-api-call
   [url num]
   (let [response (client/get url {:as :json
+                                  :throw-exceptions false
                                   :query-params {"state" (:state env)
                                                  "sort" (:sort-by env)
                                                  "direction" (:sort-direction env)
                                                  "page" (str num)
                                                  "per_page" "20"}})]
-    (if (= (:status response)
-           403)
-      (log/error (str "403 response received from server. This tipically means that the API calls limit has been "
-                      "exceeded. Try again later on. See the following link for more details: "
-                      "https://developer.github.com/v3/#rate-limiting"))
-      response)))
+    (case (:status response)
+      200 response
+      403 (log/error (str "403 response received from server. This tipically means that the API calls limit has been "
+                          "exceeded. Try again later on. See the following link for more details: "
+                          "https://developer.github.com/v3/#rate-limiting"))
+      (throw (Exception. response)))))
 
 (defn get-batch-of-issues
   [url num]
@@ -60,5 +61,5 @@
                      stem-data
                      frequencies
                      (sort-by second >)
-                     (take 10))]
+                     (take (:top-n-words env)))]
     (pprint results)))
