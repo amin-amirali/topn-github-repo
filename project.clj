@@ -11,4 +11,5 @@
   :resource-paths ["resources" "config"]
   :profiles {:uberjar {:aot :all}}
   :uberjar-name "topn-github-repo.jar"
+  :aliases {"test-and-build" ["do" ["test"] ["uberjar"]]}
 )

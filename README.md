@@ -11,7 +11,7 @@ https://github.com/dkmarley/peco
 
 ## Usage
 
-To package into a jar, run: `lein uberjar`
+To package into a jar, run: `lein test-and-build`
 
 Tests can be executed by running: `lein test`
 
@@ -38,8 +38,13 @@ by exploring the API further. A possible solution would be:
  - Curl through the list 1-by-1 to get the required data
  - Proceed with data treating (stemming and counting)
  
- This would mean, though, that we would run 1001 API calls, and that exceeds the limitation of 60/hour
- that is given for unauthenticated calls.
+This would mean, though, that we would run 1001 API calls, and that exceeds the limitation of 60/hour
+that is given for unauthenticated calls.
+
+It also looks like the GitHub API has been designed for retrieving data for display, rather than
+for analytics purposes. This kind of analysis (top-n words in issues) would make a lot of sense to be
+done on the backend (where the data could be accessed directly). Alternatively, new end-points could be
+created to make the gathering/preparation/analysis of the data easier.
  
 ## Issues
 
